@@ -1,8 +1,8 @@
 # text-to-eleven-to-omnystudio
 
-FastAPI server to automate and chain
-* TTS audio generation (via Elevenlabs)
-* Audio hosting (via OmnyStudio) 
+FastAPI server to chain ElevenLabs & OmnyStudio APIs:
+- ElevenLabs TTS audio file generation
+- OmnyStudio clip generation & audio hosting
 
 ## Quickstart
 
@@ -18,9 +18,26 @@ Run the server
 $ uvicorn main:app
 ```
 
-Now do a POST request to /audio-tts/stream
+## Config parameters
+
+- ElevenLabs
+  - Voice ID (_eleven_voice_, required)
+  - Model ID (_eleven_model_, optional)
+  - Voice stability (_eleven_stability_, optional)
+  - Voice similarity (_eleven_similarity_, optional)
+  - Voice style exaggeration (_eleven_style_, optional)
+  - Voice speaker boost (_eleven_boost_, optional)
+  - Audio output format (_eleven_output_, optional)
+- OmnyStudio
+  - Destination program (_omny_program_, required)
+  - Dastination playlist (_omny_playlist_, required)
+  - Created clip visibility (_omny_visibility_, optional)
+- Content metadata
+  - Content title (_article_title_, optional)
 
 ## Example
+
+POST request to /audio-tts/stream
 
 ```javascript
 var text = "<TTS text sample goes here>";
@@ -42,5 +59,5 @@ fetch('http://localhost:8080/audio-tts/stream', {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify({"content": text, "config": settings}),
-})
+});
 ```
