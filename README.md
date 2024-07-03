@@ -18,7 +18,7 @@ Run the server
 $ uvicorn main:app
 ```
 
-## Config parameters
+## Request parameters
 
 - ElevenLabs
   - Voice ID (_eleven_voice_, required)
