@@ -6,7 +6,7 @@ FastAPI server to chain ElevenLabs & OmnyStudio APIs:
 
 ## Quickstart
 
-Set your API keys (ELEVENLABS_API_KEY & OMNY_API_KEY)
+Set your API keys (OPENAI, ELEVENLABS_API_KEY & OMNY_API_KEY)
 
 Install requirements
 ```bash
