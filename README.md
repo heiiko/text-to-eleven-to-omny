@@ -31,9 +31,9 @@ Note - if you put it behind a nginx (or whatever) make sure to allow for streami
   - Voice speaker boost (_eleven_boost_, optional)
   - Audio output format (_eleven_output_, optional)
 - OmnyStudio
-  - Destination program (_program_, required)
-  - Dastination playlist (_playlist_, required)
-  - Created clip visibility (_visibility_, optional)
+  - Destination program (_omny_program_, required)
+  - Dastination playlist (_omny_playlist_, required)
+  - Created clip visibility (_omny_visibility_, optional)
 - Content metadata
   - Content title (_article_title_, optional)
 
@@ -61,11 +61,11 @@ var messages = messages=[
 var settings = {
     'config': {
         'eleven_voice': '<Elevenlabs Voice ID>',
-        'playlist': '<OmnyStudio Playlist ID>',
-        'program': '<OmnyStudio Program ID>'
+        'omny_playlist': '<OmnyStudio Playlist ID>',
+        'omny_program': '<OmnyStudio Program ID>'
     },
-    'article': {
-        'title': '<Content title>'
+    'metadata': {
+        'article_title': '<Content title>'
     }
 };
 settings = JSON.stringify(settings);
