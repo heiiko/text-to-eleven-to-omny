@@ -20,6 +20,7 @@ $ uvicorn main:app
 
 ## Request parameters
 
+- LLM message history
 - ElevenLabs
   - Voice ID (_eleven_voice_, required)
   - Model ID (_eleven_model_, optional)
@@ -29,9 +30,9 @@ $ uvicorn main:app
   - Voice speaker boost (_eleven_boost_, optional)
   - Audio output format (_eleven_output_, optional)
 - OmnyStudio
-  - Destination program (_omny_program_, required)
-  - Dastination playlist (_omny_playlist_, required)
-  - Created clip visibility (_omny_visibility_, optional)
+  - Destination program (_program_, required)
+  - Dastination playlist (_playlist_, required)
+  - Created clip visibility (_visibility_, optional)
 - Content metadata
   - Content title (_article_title_, optional)
 
@@ -40,15 +41,30 @@ $ uvicorn main:app
 POST request to /audio-tts/stream
 
 ```javascript
-var text = "<TTS text sample goes here>";
+var messages = messages=[
+  {
+    "role": "assistant",
+    "content": [{
+      "type": "text",
+      "text": "<TTS TEXT GOED HERE>"
+    }]
+  },
+  {
+    "role": "user",
+    "content": [{
+      "type": "text",
+      "text": "Transform your last output to audio via TTS"
+    }]
+  }
+];
 var settings = {
     'config': {
         'eleven_voice': '<Elevenlabs Voice ID>',
-        'omny_playlist': '<OmnyStudio Playlist ID>',
-        'omny_program': '<OmnyStudio Program ID>'
+        'playlist': '<OmnyStudio Playlist ID>',
+        'program': '<OmnyStudio Program ID>'
     },
-    'metadata': {
-        'article_title': '<Content title>'
+    'article': {
+        'title': '<Content title>'
     }
 };
 settings = JSON.stringify(settings);
@@ -58,6 +74,6 @@ fetch('http://localhost:8080/audio-tts/stream', {
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify({"content": text, "config": settings}),
+    body: JSON.stringify({"messages": messages, "config": settings}),
 });
 ```
