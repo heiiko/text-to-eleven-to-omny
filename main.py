@@ -110,11 +110,11 @@ async def create_omnystudio_clip(parameters: dict):
     try:
         async with httpx.AsyncClient() as client:
             response = await client.post(
-                f"https://api.omnystudio.com/v0/programs/{parameters['config']['program']}/clips",
+                f"https://api.omnystudio.com/v0/programs/{parameters['config']['omny_program']}/clips",
                 json={
-                    "Title": parameters.get('article', {}).get('title', 'Unknown'),
-                    "Visibility": parameters.get('config', {}).get('visibility', 'Private'),
-                    "PlaylistIds": [parameters['config']['playlist']]
+                    "Title": parameters.get('metadata', {}).get('article_title', 'Unknown'),
+                    "Visibility": parameters.get('config', {}).get('omny_visibility', 'Private'),
+                    "PlaylistIds": [parameters['config']['omny_playlist']]
                 },
                 headers={"Authorization": f"Bearer {OMNY_API_KEY}"}
             )
@@ -129,7 +129,7 @@ async def upload_audio_to_omnystudio(parameters: dict, clip_metadata: dict, audi
     try:
         async with httpx.AsyncClient() as client:
             response = await client.put(
-                f"https://api.omnystudio.com/v0/programs/{parameters['config']['program']}/clips/{clip_metadata['Id']}/audio",
+                f"https://api.omnystudio.com/v0/programs/{parameters['config']['omny_program']}/clips/{clip_metadata['Id']}/audio",
                 content=audio_content,
                 headers={"Authorization": f"Bearer {OMNY_API_KEY}"}
             )
