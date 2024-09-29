@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 from fastapi.responses import StreamingResponse
+import openai
 import logging
 import httpx
 import json
