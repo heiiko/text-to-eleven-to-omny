@@ -17,6 +17,7 @@ Run the server
 ```bash
 $ uvicorn main:app
 ```
+Note - if you put it behind a nginx (or whatever) make sure to allow for streaming responses
 
 ## Request parameters
 
