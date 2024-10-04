@@ -44,17 +44,17 @@ POST request to /audio-tts/stream
 ```javascript
 var messages = messages=[
   {
-    "role": "assistant",
-    "content": [{
-      "type": "text",
-      "text": "<TTS TEXT GOED HERE>"
-    }]
-  },
-  {
     "role": "user",
     "content": [{
       "type": "text",
       "text": "Transform your last output to audio via TTS"
+    }]
+  },
+  {
+    "role": "assistant",
+    "content": [{
+      "type": "text",
+      "text": "<TTS TEXT GOES HERE>"
     }]
   }
 ];
