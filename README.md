@@ -68,6 +68,8 @@ var settings = {
         'article_title': '<Content title>'
     }
 };
+
+messages = JSON.stringify(messages);
 settings = JSON.stringify(settings);
 
 fetch('http://localhost:8080/audio-tts/stream', {
